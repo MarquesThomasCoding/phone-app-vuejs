@@ -27,6 +27,7 @@ export default {
             this.exist = this.contactStore.existContact(number)
         },
         appeler(number) {
+            this.number = '';
             if (this.exist) {
                 this.journalStore.addAppel(this.contactStore.returnContact(number).name);
             }
@@ -68,14 +69,26 @@ export default {
 </template>
 
 <style scoped>
-.contact {
+div.contact {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 20px;
+    gap: 5px;
     height: 30px;
     padding: 0;
+    margin-block: 20px;
+}
+
+span.contact {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+span.number {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .clavier {
     list-style: none;
@@ -104,6 +117,10 @@ button {
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 div.appel {

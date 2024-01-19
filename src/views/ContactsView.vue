@@ -23,7 +23,7 @@ export default {
 <template>
     <div>
         <h1>Contacts</h1>
-        <RouterLink to="/add-contact">+</RouterLink>
+        <RouterLink to="/add-contact" class="add-contact">+</RouterLink>
         <ul>
             <li v-for="contact in contactStore.contacts">
                 <span class="name">{{ contact.name }}</span>
@@ -39,6 +39,15 @@ a {
     color: white;
     text-decoration: none;
 }
+
+.add-contact {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+}
+
 ul {
     list-style: none;
     display: flex;
@@ -52,6 +61,7 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
     width: 100%;
     height: 50px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -62,5 +72,17 @@ li {
 
 span.name {
     color: white;
+}
+
+span.number {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+button {
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
 }
 </style>

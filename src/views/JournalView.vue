@@ -59,10 +59,19 @@ li {
 .called {
     font-weight: bold;
     color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 li div {
     display: flex;
     flex-direction: column;
+}
+
+button {
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
 }
 </style>

@@ -19,7 +19,10 @@ export const useContactStore = defineStore('contact', {
   }),
   actions: {
     addContact(contact) {
-      this.contacts.push(contact)
+        if (this.existContact(contact.phone)) {
+            return
+        }
+        this.contacts.push(contact)
     },
     appelerContact(contact) {
       console.log(`Appel en cours vers ${contact.name} au ${contact.phone}`)
