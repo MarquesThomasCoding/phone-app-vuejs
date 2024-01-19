@@ -12,9 +12,9 @@ export default {
 
 <template>
   <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/contacts">Contacts</RouterLink>
-    <RouterLink to="/journal">Journal</RouterLink>
+    <RouterLink to="/"><img src="@/assets/imgs/home.png" alt="Home"></RouterLink>
+    <RouterLink to="/contacts"><img src="@/assets/imgs/contact.png" alt="Contacts"></RouterLink>
+    <RouterLink to="/journal"><img src="@/assets/imgs/journal.png" alt="Journal"></RouterLink>
   </nav>
   
   <RouterView />
@@ -35,5 +35,14 @@ nav {
 a {
   color: white;
   text-decoration: none;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+}
+
+img:hover {
+  filter: grayscale(100%) brightness(50%);
 }
 </style>
