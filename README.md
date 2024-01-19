@@ -10,7 +10,7 @@ Chaque pseudo-appel est enregistré dans le journal d'appel.
 
 ## Setup IDE Recommandé
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur)
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 ## Project Setup
 
