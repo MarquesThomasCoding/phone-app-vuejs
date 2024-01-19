@@ -22,7 +22,18 @@ export default {
 
 <style scoped>
 nav {
-  position: fixed;
+  position: absolute;
   bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 </style>

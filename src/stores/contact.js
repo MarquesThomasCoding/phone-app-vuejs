@@ -4,17 +4,14 @@ export const useContactStore = defineStore('contact', {
   state: () => ({
     contacts: [
       {
-        id: 1,
         name: 'John Doe',
         phone: '0645109072',
       },
       {
-        id: 2,
         name: 'Jane Doe',
         phone: '08765432',
       },
       {
-        id: 3,
         name: 'John Smith',
         phone: '23084567',
       },
@@ -23,9 +20,6 @@ export const useContactStore = defineStore('contact', {
   actions: {
     addContact(contact) {
       this.contacts.push(contact)
-    },
-    deleteContact(id) {
-      this.contacts = this.contacts.filter(contact => contact.id !== id)
     },
     appelerContact(contact) {
       console.log(`Appel en cours vers ${contact.name} au ${contact.phone}`)

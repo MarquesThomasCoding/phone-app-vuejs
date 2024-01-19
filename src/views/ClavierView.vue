@@ -40,6 +40,7 @@ export default {
 
 <template>
     <div>
+        <h1>Clavier</h1>
         <div class="contact">
             <span v-if="this.exist" class="contact">{{ this.contactStore.returnContact(this.number).name }}</span>
             <span class="number">{{ this.number }}</span>
@@ -60,31 +61,27 @@ export default {
             </li>
         </ul>
 
-        <button v-if="this.number.length > 0" @click="appeler(this.number)" class="appel">APPELER</button>
+        <div class="appel">
+            <button v-if="this.number.length > 0" @click="appeler(this.number)" class="appelBtn">📞</button>
+        </div>
     </div>
 </template>
 
 <style scoped>
-div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 .contact {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-bottom: 20px;
+    height: 30px;
+    padding: 0;
 }
 .clavier {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: 300px;
+    width: 100%;
     gap: 30px;
 }
 
@@ -109,11 +106,23 @@ button {
     cursor: pointer;
 }
 
-button.appel {
-    width: 300px;
-    height: 50px;
+div.appel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    margin-top: 20px;
+    padding: 0;
+}
+
+button.appelBtn {
+    height: 100%;
+    width: 65px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
+    background-color: #42b983;
     padding: 10px;
     font-weight: bold;
     cursor: pointer;
