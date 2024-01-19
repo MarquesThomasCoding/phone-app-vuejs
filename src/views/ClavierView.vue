@@ -1,9 +1,27 @@
 <script>
+import { useContactStore } from '@/stores/contact';
+
 export default {
     name: 'ClavierView',
+    setup() {
+        const contactStore = useContactStore();
+        return {
+            contactStore,
+        }
+    },
+    data() {
+        return {
+            number: '',
+            exist: false,
+        }
+    },
     methods: {
-        appeler(number) {
-            console.log(number.toString());
+        addNumber(number) {
+            this.number += number.toString();
+            this.existContact(this.number);
+        },
+        existContact(number) {
+            this.exist = this.contactStore.existContact(number)
         },
     }
 }
@@ -11,18 +29,21 @@ export default {
 
 <template>
     <div>
+        <span v-if="this.exist" class="contact">{{ this.contactStore.returnContact(this.number).name }}</span>
+        <span class="number">{{ this.number }}</span>
+
         <ul class="clavier">
             <li v-for="i in 9">
-                <button @click="appeler(i-1)" class="btn btn-clavier">{{ i-1 }}</button>
+                <button @click="addNumber(i)" class="btn btn-clavier">{{ i }}</button>
             </li>
             <li>
-                <button @click="appeler('*')" class="btn btn-clavier">*</button>
+                <button @click="addNumber('*')" class="btn btn-clavier">*</button>
             </li>
             <li>
-                <button @click="appeler(0)" class="btn btn-clavier">0</button>
+                <button @click="addNumber(0)" class="btn btn-clavier">0</button>
             </li>
             <li>
-                <button @click="appeler('#')" class="btn btn-clavier">#</button>
+                <button @click="addNumber('#')" class="btn btn-clavier">#</button>
             </li>
         </ul>
     </div>
