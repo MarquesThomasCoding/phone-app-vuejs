@@ -27,13 +27,33 @@ export default {
             this.exist = this.contactStore.existContact(number)
         },
         appeler(number) {
-            this.number = '';
+            this.shakePhone();
+            if (number === '') {
+                return;
+            }
+            this.showCall();
             if (this.exist) {
                 this.journalStore.addAppel(this.contactStore.returnContact(number).name);
             }
             else {
                 this.journalStore.addAppel(number);
             }
+            this.number = '';
+            this.exist = false;
+        },
+        shakePhone() {
+            const appelBtn = document.querySelector('.appelBtn');
+            appelBtn.classList.add('shake');
+            setTimeout(() => {
+                appelBtn.classList.remove('shake');
+            }, 1000);
+        },
+        showCall() {
+            const appelEnCours = document.querySelector('.appel-en-cours');
+            appelEnCours.classList.remove('hidden');
+            setTimeout(() => {
+                appelEnCours.classList.add('hidden');
+            }, 1000);
         },
     }
 }
@@ -63,7 +83,7 @@ export default {
         </ul>
 
         <div class="appel">
-            <button v-if="this.number.length > 0" @click="appeler(this.number)" class="appelBtn">📞</button>
+            <button @click="appeler(this.number)" class="appelBtn">📞</button>
         </div>
     </div>
 </template>
@@ -75,7 +95,7 @@ div.contact {
     align-items: center;
     flex-direction: column;
     gap: 5px;
-    height: 30px;
+    height: 60px;
     padding: 0;
     margin-block: 20px;
 }
@@ -89,6 +109,7 @@ span.number {
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
 }
 .clavier {
     list-style: none;
@@ -143,5 +164,18 @@ button.appelBtn {
     padding: 10px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, -2px) rotate(-1deg); }
+    40% { transform: translate(2px, 2px) rotate(1deg); }
+    60% { transform: translate(-2px, -2px) rotate(-1deg); }
+    80% { transform: translate(2px, 2px) rotate(1deg); }
+    100% { transform: translate(0, 0); }
 }
 </style>

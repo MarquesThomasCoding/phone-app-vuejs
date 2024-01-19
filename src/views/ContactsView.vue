@@ -14,7 +14,15 @@ export default {
     },
     methods: {
         appeler(contact) {
+            this.showCall();
             this.journalStore.addAppel(contact);
+        },
+        showCall() {
+            const appelEnCours = document.querySelector('.appel-en-cours');
+            appelEnCours.classList.remove('hidden');
+            setTimeout(() => {
+                appelEnCours.classList.add('hidden');
+            }, 1000);
         },
     }
 }
