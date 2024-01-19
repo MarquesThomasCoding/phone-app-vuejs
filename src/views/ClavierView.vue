@@ -2,8 +2,8 @@
 export default {
     name: 'ClavierView',
     methods: {
-        appeler() {
-            console.log('appeler');
+        appeler(number) {
+            console.log(number.toString());
         },
     }
 }
@@ -13,16 +13,16 @@ export default {
     <div>
         <ul class="clavier">
             <li v-for="i in 9">
-                <button @click="appeler()" class="btn btn-clavier">{{ i-1 }}</button>
+                <button @click="appeler(i-1)" class="btn btn-clavier">{{ i-1 }}</button>
             </li>
             <li>
-                <button @click="appeler()" class="btn btn-clavier">*</button>
+                <button @click="appeler('*')" class="btn btn-clavier">*</button>
             </li>
             <li>
-                <button @click="appeler()" class="btn btn-clavier">0</button>
+                <button @click="appeler(0)" class="btn btn-clavier">0</button>
             </li>
             <li>
-                <button @click="appeler()" class="btn btn-clavier">#</button>
+                <button @click="appeler('#')" class="btn btn-clavier">#</button>
             </li>
         </ul>
     </div>
