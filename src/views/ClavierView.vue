@@ -116,7 +116,7 @@ span.number {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    gap: 30px;
+    gap: 15px;
 }
 
 li {
