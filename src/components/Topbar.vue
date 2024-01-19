@@ -3,7 +3,7 @@ export default {
     name: 'Topbar',
     data() {
         return {
-            hour: `${new Date().getHours()}:${new Date().getMinutes()}`,
+            hour: `${new Date().getHours().toString().padStart(2, '0')}:${new Date().getMinutes().toString().padStart(2, '0')}`,
         }
     }
 }
