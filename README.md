@@ -1,14 +1,16 @@
-# phone-app
+# phone-app-vuejs
 
-This template should help get you started developing with Vue 3 in Vite.
+Ce projet étudiant consiste en une pseudo-application de téléphone destinée à apprendre le framework Vue.js.
 
-## Recommended IDE Setup
+Le visuel représente un téléphone avec un écran d'accueil, un clavier numérique et un écran de contact.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Sur la page des contacts, il est possible d'ajouter un contact.
 
-## Customize configuration
+Chaque pseudo-appel est enregistré dans le journal d'appel.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Setup IDE Recommandé
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur)
 
 ## Project Setup
 
@@ -27,3 +29,16 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Technologies utilisées
+- [Vue.js](https://vuejs.org/)
+- [Vue Router](https://router.vuejs.org/)
+- [HTML5](https://developer.mozilla.org/fr/docs/Web/HTML)
+- [CSS3](https://developer.mozilla.org/fr/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript)
+
+### Statut
+✅ Terminé
+
+### Lien du projet déployé
+https://phone-app-vuejs.vercel.app/
