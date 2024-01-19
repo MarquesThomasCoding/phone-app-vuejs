@@ -1,12 +1,15 @@
 <script>
 import { useContactStore } from '@/stores/contact';
+import { useJournalStore } from '@/stores/journal';
 
 export default {
     name: 'ClavierView',
     setup() {
         const contactStore = useContactStore();
+        const journalStore = useJournalStore();
         return {
             contactStore,
+            journalStore,
         }
     },
     data() {
@@ -23,14 +26,24 @@ export default {
         existContact(number) {
             this.exist = this.contactStore.existContact(number)
         },
+        appeler(number) {
+            if (this.exist) {
+                this.journalStore.addAppel(this.contactStore.returnContact(number).name);
+            }
+            else {
+                this.journalStore.addAppel(number);
+            }
+        },
     }
 }
 </script>
 
 <template>
     <div>
-        <span v-if="this.exist" class="contact">{{ this.contactStore.returnContact(this.number).name }}</span>
-        <span class="number">{{ this.number }}</span>
+        <div class="contact">
+            <span v-if="this.exist" class="contact">{{ this.contactStore.returnContact(this.number).name }}</span>
+            <span class="number">{{ this.number }}</span>
+        </div>
 
         <ul class="clavier">
             <li v-for="i in 9">
@@ -46,13 +59,63 @@ export default {
                 <button @click="addNumber('#')" class="btn btn-clavier">#</button>
             </li>
         </ul>
+
+        <button v-if="this.number.length > 0" @click="appeler(this.number)" class="appel">APPELER</button>
     </div>
 </template>
 
 <style scoped>
+div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
 .clavier {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    width: 300px;
+    gap: 30px;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button.appel {
+    width: 300px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
 }
 </style>

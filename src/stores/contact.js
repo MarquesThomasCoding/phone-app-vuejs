@@ -6,7 +6,7 @@ export const useContactStore = defineStore('contact', {
       {
         id: 1,
         name: 'John Doe',
-        phone: '1',
+        phone: '0645109072',
       },
       {
         id: 2,
