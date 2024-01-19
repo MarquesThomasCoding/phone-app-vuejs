@@ -1,8 +1,12 @@
 <script>
 import { useJournalStore } from '@/stores/journal';
+import CallCard from '@/components/CallCard.vue';
 
 export default {
     name: 'JournalView',
+    components: {
+        CallCard,
+    },
     setup() {
         const journalStore = useJournalStore();
         return {
@@ -10,17 +14,7 @@ export default {
         }
     },
     methods: {
-        appeler(contact) {
-            this.showCall();
-            this.journalStore.addAppel(contact);
-        },
-        showCall() {
-            const appelEnCours = document.querySelector('.appel-en-cours');
-            appelEnCours.classList.remove('hidden');
-            setTimeout(() => {
-                appelEnCours.classList.add('hidden');
-            }, 1000);
-        },
+        
     }
 }
 </script>
@@ -30,12 +24,7 @@ export default {
         <h1>Journal</h1>
         <ul>
             <li v-for="appel in journalStore.journal">
-                <span class="called">{{ appel.called }}</span>
-                <div>
-                    <span>{{ appel.date }}</span>
-                    <span>{{ appel.hour }}</span>
-                </div>
-                <button @click="appeler(appel.called)" class="appel">📞</button>
+                <CallCard :appel="appel" :journalStore="this.journalStore" />
             </li>
         </ul>
     </div>
@@ -62,24 +51,5 @@ li {
     padding: 0 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-}
-
-.called {
-    font-weight: bold;
-    color: white;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-li div {
-    display: flex;
-    flex-direction: column;
-}
-
-button {
-    border: none;
-    background: none;
-    font-size: 20px;
-    cursor: pointer;
 }
 </style>
