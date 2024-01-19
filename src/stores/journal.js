@@ -10,8 +10,8 @@ export const useJournalStore = defineStore('journal', {
         let newCall = {
             id: this.journal.length + 1,
             called: appel,
-            date: `${new Date().getDay()}/${new Date().getMonth()}/${new Date().getFullYear()}`,
-            hour: `${new Date().getHours()}:${new Date().getMinutes()}`,
+            date: `${new Date().getDate().toString().padStart(2, '0')}/${(new Date().getMonth() + 1).toString().padStart(2, '0')}/${new Date().getFullYear()}`,
+            hour: `${new Date().getHours().toString().padStart(2, '0')}:${new Date().getMinutes().toString().padStart(2, '0')}`,
         }
         this.journal.push(newCall)
     },
